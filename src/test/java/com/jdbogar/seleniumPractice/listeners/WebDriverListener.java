@@ -39,7 +39,7 @@ public class WebDriverListener implements IInvokedMethodListener, StepLifecycleL
         	configFileReader = ConfigFileReader.getConfigFileReader();
         	
         	String methodName = method.getTestMethod().getMethodName();
-        	String excelPath = System.getProperty("user.dir")+configFileReader.getExcelPath()+"\\"+configFileReader.getEnvironment()+"Regression.xlsx";
+        	String excelPath = System.getProperty("user.dir")+configFileReader.getExcelPath()+"/"+configFileReader.getEnvironment()+"Regression.xlsx";
         
         	System.out.println("Running test --> " + methodName);
         	
