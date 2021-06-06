@@ -89,6 +89,7 @@ public class WebDriverManager {
 			if(configFileReader.isHeadlessMode()) {
 				chromeOptions.addArguments("--headless");
 				chromeOptions.addArguments("--disable-gpu");
+				chromeOptions.addArguments("--disable-dev-shm-usage");
 			}
 
 			if (configFileReader.isBrowserMaximumSize()) {
