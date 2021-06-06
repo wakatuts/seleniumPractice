@@ -4,6 +4,7 @@ node {
    }
    stage('Test') {
         try {
+            sh "mvn install"
             sh "mvn verify"
         } catch (err) {
             
