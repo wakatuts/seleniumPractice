@@ -4,8 +4,10 @@ node {
    }
    stage('Test') {
         try {
-            sh "mvn install"
-            sh "mvn verify"
+        	withMaven {
+            	sh "mvn clean verify"
+        	}
+
         } catch (err) {
             
         } finally {
