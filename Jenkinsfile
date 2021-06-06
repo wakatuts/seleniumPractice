@@ -4,7 +4,7 @@ node {
    }
    stage('Test') {
         try {
-        	withMaven {
+        	withMaven(maven: 'maven-3') {
             	sh "mvn clean verify"
         	}
 
