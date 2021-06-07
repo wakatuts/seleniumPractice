@@ -41,7 +41,6 @@ public class TestBuyTShirt extends BaseTest{
 		authenticationSteps.logIn(testData.get("emailAddress"), testData.get("password"));
 		
 		tshirtSteps.clickTShirts();
-//		tshirtSteps.selectTShirtSize("M");
 		tshirtSteps.addTShirtToCart((String) testData.get("tShirtName"));
 		
 		verifyAddToCartSuccessful();
