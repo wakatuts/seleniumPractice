@@ -52,14 +52,20 @@ public class WebDriverManager {
 			System.setProperty(CHROME_DRIVER_PROPERTY, configFileReader.getDriverPath());
 			ChromeOptions chromeOptions = new ChromeOptions();
 			chromeOptions.addArguments("--incognito");
+			chromeOptions.addArguments("--disable-extensions");
+			chromeOptions.setExperimentalOption("useAutomationExtension", false);
+			chromeOptions.addArguments("--proxy-server='direct://'");
+			chromeOptions.addArguments("--proxy-bypass-list=*");
 			
 			if(configFileReader.isHeadlessMode()) {
 				chromeOptions.addArguments("--headless");
 				chromeOptions.addArguments("--disable-gpu");
+				chromeOptions.setHeadless(true);
 			}
 
 			if (configFileReader.isBrowserMaximumSize()) {
-				chromeOptions.addArguments("--window-size=1920,1080");			
+				chromeOptions.addArguments("--window-size=1920x1080");
+				chromeOptions.addArguments("--start-maximized");
 			}
 			
 			driver = new ChromeDriver(chromeOptions);
@@ -85,15 +91,21 @@ public class WebDriverManager {
 			System.setProperty(CHROME_DRIVER_PROPERTY, configFileReader.getDriverPath());
 			ChromeOptions chromeOptions = new ChromeOptions();
 			chromeOptions.addArguments("--incognito");
+			chromeOptions.addArguments("--disable-extensions");
+			chromeOptions.setExperimentalOption("useAutomationExtension", false);
+			chromeOptions.addArguments("--proxy-server='direct://'");
+			chromeOptions.addArguments("--proxy-bypass-list=*");
 			
 			if(configFileReader.isHeadlessMode()) {
 				chromeOptions.addArguments("--headless");
 				chromeOptions.addArguments("--disable-gpu");
 				chromeOptions.addArguments("--disable-dev-shm-usage");
+				chromeOptions.setHeadless(true);
 			}
 
 			if (configFileReader.isBrowserMaximumSize()) {
-				chromeOptions.addArguments("--window-size=1920,1080");			
+				chromeOptions.addArguments("--window-size=1920x1080");
+				chromeOptions.addArguments("--start-maximized");
 			}
 			
 			try {

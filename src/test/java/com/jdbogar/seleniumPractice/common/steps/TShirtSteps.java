@@ -1,5 +1,7 @@
 package com.jdbogar.seleniumPractice.common.steps;
 
+import org.openqa.selenium.TimeoutException;
+
 import com.jdbogar.seleniumPractice.annotations.CommonStep;
 import com.jdbogar.seleniumPractice.annotations.PageInstance;
 import com.jdbogar.seleniumPractice.pages.HomePage;
@@ -21,7 +23,16 @@ public class TShirtSteps {
 		switch (tShirt) {
 		case "Faded Short Sleeve T-shirts":
 			tShirtsPage.fadedShortSleeve().click();
+			
+			try {
+				tShirtsPage.waitForElement(tShirtsPage.addToCart(), 3);
+			} catch (TimeoutException e) {
+				tShirtsPage.switchToOverlay(tShirtsPage.tShirtOverlay());
+				tShirtsPage.waitForElement(tShirtsPage.addToCart(), 3);
+			}
+			
 			tShirtsPage.addToCart().click();
+			tShirtsPage.switchToDefaultWindow();
 			break;
 		default:
 			break;
@@ -37,7 +48,5 @@ public class TShirtSteps {
 	public void proceedToCheckOut() {
 		tShirtsPage.proceedToCheckOut().click();
 	}
-	
-	
 
 }

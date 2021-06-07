@@ -75,7 +75,7 @@ public class WebDriverListener implements IInvokedMethodListener, StepLifecycleL
 
     public void takeScreenshotOnFailure(ITestResult testResult) throws IOException {
 
-        if(testResult.getStatus() == ITestResult.FAILURE) {
+        if(testResult.getStatus() == ITestResult.FAILURE || testResult.getStatus() == ITestResult.SKIP) {
 
             File screenShot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.FILE);
             File destination = new File("target/failure-screenshots/" + testResult.getName() + "-"

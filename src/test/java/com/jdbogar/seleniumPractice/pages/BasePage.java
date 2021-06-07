@@ -145,4 +145,12 @@ public abstract class BasePage{
 		action.moveToElement(element).click().build().perform();
 	}
 	
+	public <T extends Element> void switchToOverlay(final T element) {
+		driver.switchTo().frame(element);
+	}
+	
+	public void switchToDefaultWindow() {
+		driver.switchTo().defaultContent();
+	}
+	
 }

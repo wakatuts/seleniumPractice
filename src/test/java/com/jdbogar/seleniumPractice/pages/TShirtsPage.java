@@ -4,6 +4,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.jdbogar.seleniumPractice.annotations.PageObject;
 import com.jdbogar.seleniumPractice.elements.base.Element;
+import com.jdbogar.seleniumPractice.elements.factory.widget.IFrame;
 import com.jdbogar.seleniumPractice.elements.factory.widget.Label;
 
 @PageObject
@@ -23,7 +24,7 @@ public class TShirtsPage extends BasePage {
 		return tShirtsTab;
 	}
 	
-	@FindBy(css="button[name='Submit'] span")
+	@FindBy(id="add_to_cart")
 	private Element addToCart;
 
 	public final Element addToCart() {
@@ -42,5 +43,12 @@ public class TShirtsPage extends BasePage {
 
 	public final Element proceedToCheckOut() {
 		return proceedToCheckOut;
+	}
+	
+	@FindBy(className="fancybox-iframe")
+	private IFrame tShirtOverlay;
+	
+	public final IFrame tShirtOverlay() {
+		return tShirtOverlay;
 	}
 }
